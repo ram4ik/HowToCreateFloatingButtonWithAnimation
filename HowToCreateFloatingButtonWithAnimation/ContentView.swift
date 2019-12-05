@@ -9,8 +9,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var change: Bool = true
     var body: some View {
-        Text("Hello World")
+        NavigationView {
+            ZStack {
+                List {
+                    Text("Floating button")
+                }
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.change.toggle()
+                        }) {
+                            Image(systemName: self.change ? "plus" : "xmark")
+                        }.padding()
+                        .foregroundColor(.white)
+                        .background(Color.blue.opacity(0.8))
+                        .clipShape(Circle())
+                        .shadow(radius: 15)
+                        .padding()
+                    }
+                }
+            }
+        }
     }
 }
 
